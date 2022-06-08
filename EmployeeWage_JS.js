@@ -1,8 +1,6 @@
 /*--------Employee Wage-------*/
 console.log("Welcome to the employee wage programs :-) ");
-/*       UC3
-Refactor the Code to write a function to get work hours
-*/
+
 const PART_TIME_HRs=4;
 const FULL_TIME_HRs=8;
 const WAGE_PER_HRs=20;
@@ -25,12 +23,18 @@ switch(employeeCheck){
         break;        
 }
 }
+function calcDailyWage(empHrs){
+        return empHrs * WAGE_PER_HRs;
+}
 let totalEmpHrs = 0;
+let empHrs = 0;
 let totalWorkingDays = 0;
+let empDailyWageArr = new Array();
 while(totalEmpHrs <= MAX_HRS_IN_MONTH && totalWorkingDays < NUM_OF_WORKING_DAYS){
     totalWorkingDays++;
     let employeeCheck = Math.floor(Math.random()*10)%3;
     totalEmpHrs += getWorkingHrs(employeeCheck);
+    empDailyWageArr.push(calcDailyWage(empHrs));
 }
-let empWage = totalEmpHrs * WAGE_PER_HRs;
+let empWage = calcDailyWage(totalEmpHrs);
 console.log("Total Days is :- " + totalWorkingDays+ "\nTotal Employee Hrs is:- "+totalEmpHrs+ " \nEmploye wage is :- " +empWage);
